@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untapped B.V. — Software development studio, Amsterdam</title>
+  <meta name="description" content="Untapped B.V. is an Amsterdam-based software studio building Shopify apps, custom integrations, and business automation tools. Registered in the Netherlands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --blue-light: #ddf4ff;
+      --green: #1a7f37;
+      --green-light: #dafbe1;
+      --amber: #9a6700;
+      --amber-light: #fff8c5;
+      --orange: #bc4c00;
+      --orange-light: #fff1e5;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: var(--bg); background: var(--ink); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero { padding: 100px 32px 80px; max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:768px){ .hero { grid-template-columns: 1fr; gap: 48px; padding: 64px 24px 48px; } }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .hero-kicker::before { content: ''; width: 20px; height: 1px; background: var(--border); }
+    h1 { font-family: var(--fd); font-size: clamp(38px, 5vw, 58px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 22px; }
+    h1 em { font-style: italic; color: var(--muted); }
+    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; max-width: 440px; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary { font-size: 14px; font-weight: 600; color: var(--bg); background: var(--ink); padding: 10px 22px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary { font-size: 14px; font-weight: 500; color: var(--ink); background: transparent; padding: 10px 22px; border-radius: 6px; text-decoration: none; border: 1px solid var(--border); transition: background 0.15s; }
+    .btn-secondary:hover { background: var(--bg-soft); }
+    .hero-meta { display: flex; gap: 20px; margin-top: 36px; flex-wrap: wrap; }
+    .hero-meta-item { font-size: 12px; color: var(--subtle); display: flex; align-items: center; gap: 5px; }
+    .hero-meta-item::before { content: '·'; color: var(--border); }
+    .hero-meta-item:first-child::before { display: none; }
+
+    /* Hero visual: platform grid */
+    .hero-visual { position: relative; }
+    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .platform-card { background: var(--bg); border: 1px solid var(--border-light); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; animation: fadeUp 0.5s ease both; }
+    .platform-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .platform-card:nth-child(1){animation-delay:.05s}
+    .platform-card:nth-child(2){animation-delay:.1s}
+    .platform-card:nth-child(3){animation-delay:.15s}
+    .platform-card:nth-child(4){animation-delay:.2s}
+    .platform-card:nth-child(5){animation-delay:.25s}
+    .platform-card:nth-child(6){animation-delay:.3s}
+    .platform-card:nth-child(7){animation-delay:.35s}
+    .platform-card:nth-child(8){animation-delay:.4s}
+    .platform-card:nth-child(9){animation-delay:.45s}
+    .platform-card:nth-child(10){animation-delay:.5s; grid-column: 1/-1; }
+    .platform-icon { font-size: 20px; flex-shrink: 0; }
+    .platform-name { font-size: 13px; font-weight: 600; color: var(--ink2); }
+    .platform-type { font-size: 11px; color: var(--subtle); }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border-light); margin: 0; }
+
+    /* ── WHAT WE BUILD ── */
+    .section { padding: 80px 32px; max-width: 1080px; margin: 0 auto; }
+    .section-full { padding: 80px 0; background: var(--bg-soft); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    .section-full-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); margin-bottom: 10px; }
+    .section-title { font-family: var(--fd); font-size: clamp(26px, 3.5vw, 40px); font-weight: 400; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.75; }
+
+    /* Services three-col */
+    .services { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    @media(max-width:768px){ .services { grid-template-columns: 1fr; } }
+    .service-card { border: 1px solid var(--border-light); border-radius: 12px; padding: 28px; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; }
+    .service-card:hover { border-color: var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .service-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .service-card h3 { font-family: var(--fd); font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .stag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+    .stag.blue { background: var(--blue-light); color: var(--blue); }
+    .stag.green { background: var(--green-light); color: var(--green); }
+    .stag.amber { background: var(--amber-light); color: var(--amber); }
+    .stag.orange { background: var(--orange-light); color: var(--orange); }
+    .stag.gray { background: var(--bg-inset); color: var(--muted); }
+
+    /* ── PRODUCTS ── */
+    .products { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    @media(max-width:640px){ .products { grid-template-columns: 1fr; } }
+    .product-card { border: 1px solid var(--border-light); border-radius: 14px; padding: 28px 32px; background: var(--bg); position: relative; overflow: hidden; transition: box-shadow 0.15s; }
+    .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .product-card.pg::before { background: linear-gradient(90deg, #00a67e, #00d4a0); }
+    .product-card.sn::before { background: linear-gradient(90deg, #0969da, #54aeff); }
+    .product-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 14px; }
+    .product-badge.live { background: var(--green-light); color: var(--green); }
+    .product-badge.beta { background: var(--amber-light); color: var(--amber); }
+    .product-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+    .product-card h3 { font-family: var(--fd); font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.02em; }
+    .product-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+    .product-link { font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.15s; }
+    .product-link:hover { gap: 8px; }
+    .product-link.pg { color: #00a67e; }
+    .product-link.sn { color: var(--blue); }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
+    @media(max-width:768px){ .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .about-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-facts { display: flex; flex-direction: column; gap: 14px; }
+    .fact { display: flex; gap: 14px; padding: 16px; border: 1px solid var(--border-light); border-radius: 10px; background: var(--bg); }
+    .fact-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .fact-title { font-size: 14px; font-weight: 600; color: var(--ink2); margin-bottom: 2px; }
+    .fact-sub { font-size: 13px; color: var(--muted); }
+    .founder-row { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding: 16px; background: var(--bg-soft); border: 1px solid var(--border-light); border-radius: 10px; }
+    .founder-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #e8f9f3, #a8e8d4); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .founder-name { font-size: 15px; font-weight: 600; color: var(--ink); }
+    .founder-detail { font-size: 13px; color: var(--muted); }
+    .founder-contact { font-size: 13px; color: var(--blue); font-weight: 500; text-decoration: none; }
+    .founder-contact:hover { text-decoration: underline; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--ink); padding: 80px 32px; text-align: center; }
+    .contact-inner { max-width: 560px; margin: 0 auto; }
+    .contact-section h2 { font-family: var(--fd); font-size: clamp(30px, 4vw, 44px); font-weight: 400; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .contact-section p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 36px; line-height: 1.7; }
+    .contact-methods { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .contact-btn { font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 7px; transition: all 0.15s; }
+    .contact-btn.primary { background: #fff; color: var(--ink); }
+    .contact-btn.primary:hover { background: rgba(255,255,255,0.9); }
+    .contact-btn.secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .contact-btn.secondary:hover { background: rgba(255,255,255,0.18); }
+    .contact-details { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    .contact-detail { font-size: 13px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 5px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* Mobile nav */
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } }
+
+    /* KvK chip */
+    .kvk-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--subtle); background: var(--bg-soft); border: 1px solid var(--border-light); padding: 4px 10px; border-radius: 6px; }
+    .kvk-chip .flag { font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:info@untapped.nl" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="border-bottom:1px solid var(--border-light)">
+  <div class="hero">
+    <div>
+      <div class="hero-kicker">Amsterdam · Software Studio</div>
+      <h1>We build software<br>that <em>actually ships</em></h1>
+      <p class="hero-sub">Untapped B.V. is a Dutch software studio specialising in Shopify apps, business integrations, and custom automation tools for modern companies.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in touch →</a>
+        <a href="#products" class="btn-secondary">View our products</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Registered in the Netherlands</div>
+        <div class="hero-meta-item">Shopify Partner</div>
+        <div class="hero-meta-item">KvK 93478221</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="platform-grid">
+        <div class="platform-card"><span class="platform-icon">🟢</span><div><div class="platform-name">Shopify</div><div class="platform-type">App development</div></div></div>
+        <div class="platform-card"><span class="platform-icon">📘</span><div><div class="platform-name">Zoho</div><div class="platform-type">Integration</div></div></div>
+        <div class="platform-card"><span class="platform-icon">🔷</span><div><div class="platform-name">Monday.com</div><div class="platform-type">Automation</div></div></div>
+        <div class="platform-card"><span class="platform-icon">🌩️</span><div><div class="platform-name">Salesforce</div><div class="platform-type">Integration</div></div></div>
+        <div class="platform-card"><span class="platform-icon">🧡</span><div><div class="platform-name">HubSpot</div><div class="platform-type">CRM tooling</div></div></div>
+        <div class="platform-card"><span class="platform-icon">📊</span><div><div class="platform-name">Airtable</div><div class="platform-type">Automation</div></div></div>
+        <div class="platform-card"><span class="platform-icon">💬</span><div><div class="platform-name">Slack</div><div class="platform-type">Notifications</div></div></div>
+        <div class="platform-card"><span class="platform-icon">📋</span><div><div class="platform-name">Notion</div><div class="platform-type">Workflows</div></div></div>
+        <div class="platform-card"><span class="platform-icon">💼</span><div><div class="platform-name">Pipedrive</div><div class="platform-type">Integration</div></div></div>
+        <div class="platform-card"><span class="platform-icon">⚡</span><div><div class="platform-name">Custom APIs</div><div class="platform-type">REST · GraphQL</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="section" id="services">
+  <div class="section-label">Services</div>
+  <h2 class="section-title">What we build</h2>
+  <p class="section-sub">From standalone Shopify apps to full-stack business integrations — we take products from idea to production.</p>
+  <div class="services">
+    <div class="service-card">
+      <span class="service-icon">🛍️</span>
+      <h3>Shopify Apps</h3>
+      <p>End-to-end Shopify app development using Remix, React, Polaris, and Shopify's latest app architecture. Public App Store submissions or private apps for specific merchants.</p>
+      <div class="service-tags">
+        <span class="stag green">Shopify CLI</span>
+        <span class="stag green">Polaris</span>
+        <span class="stag green">Shopify Flow</span>
+        <span class="stag gray">Webhooks</span>
+        <span class="stag gray">OAuth</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔗</span>
+      <h3>Business Integrations</h3>
+      <p>Connect your existing tools into a single automated workflow. We integrate Zoho, Monday.com, Salesforce, HubSpot, Airtable, Pipedrive and more — no manual data entry.</p>
+      <div class="service-tags">
+        <span class="stag blue">Zoho</span>
+        <span class="stag blue">Monday.com</span>
+        <span class="stag blue">HubSpot</span>
+        <span class="stag blue">Salesforce</span>
+        <span class="stag gray">REST APIs</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <h3>Custom Software</h3>
+      <p>Bespoke web applications, internal tools, and automation platforms built to spec. Java and Node.js backends, React frontends, deployed on cloud infrastructure.</p>
+      <div class="service-tags">
+        <span class="stag amber">Java</span>
+        <span class="stag amber">Node.js</span>
+        <span class="stag amber">React</span>
+        <span class="stag amber">PostgreSQL</span>
+        <span class="stag gray">Kubernetes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<div class="section-full" id="products">
+  <div class="section-full-inner">
+    <div class="section-label">Our products</div>
+    <h2 class="section-title">Built and maintained in-house</h2>
+    <p class="section-sub">Standalone SaaS apps available on the Shopify App Store, built and maintained by Untapped.</p>
+    <div class="products">
+      <div class="product-card pg">
+        <span class="product-badge live">● Live on App Store</span>
+        <span class="product-icon">🛡️</span>
+        <h3>ProfitGuard</h3>
+        <p>The only Shopify profit tracker that automatically holds unprofitable orders before they ship — with real-time loss attribution, Shopify Flow integration, and a full-stack analytics dashboard.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://profitguard.nl" class="product-link pg">profitguard.nl →</a>
+          <a href="https://apps.shopify.com/profitguard" class="product-link pg" style="opacity:.7">App Store →</a>
+        </div>
+      </div>
+      <div class="product-card sn">
+        <span class="product-badge live">● Live on App Store</span>
+        <span class="product-icon">📝</span>
+        <h3>Smart Notes</h3>
+        <p>A Shopify app for adding internal order notes, customer tags, and admin annotations directly in the Shopify admin. Used by merchants to streamline order management workflows.</p>
+        <div>
+          <a href="https://apps.shopify.com/smart-order-notes" class="product-link sn">App Store →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">One studio, end-to-end</h2>
+  <p class="section-sub">A focused, senior-level team without the overhead of a large agency.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Untapped B.V. is a software development studio registered in the Netherlands. We focus on three areas: Shopify app development, business process automation through integrations, and custom software for companies that need something built specifically for them.</p>
+      <p>We work with early-stage founders, established e-commerce brands, and operations teams that need reliable software — delivered on time, maintained properly, and documented well.</p>
+      <p>Every project is handled with a senior backend mindset: API design that doesn't break, deployments that are repeatable, and code that can be handed over cleanly.</p>
+      <div class="founder-row">
+        <div class="founder-avatar">👋</div>
+        <div>
+          <div class="founder-name">Camiel Landheer</div>
+          <div class="founder-detail">Founder · Backend developer · Amsterdam</div>
+          <a href="mailto:info@untapped.nl" class="founder-contact">info@untapped.nl</a>
+        </div>
+      </div>
+    </div>
+    <div class="about-facts">
+      <div class="fact">
+        <div class="fact-icon">📍</div>
+        <div>
+          <div class="fact-title">Based in Amsterdam</div>
+          <div class="fact-sub">Registered in the Netherlands · VAT liable · invoices in EUR</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-icon">🟢</div>
+        <div>
+          <div class="fact-title">Shopify Partner</div>
+          <div class="fact-sub">Certified Shopify Partner · apps reviewed and live on the App Store</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-icon">⚡</div>
+        <div>
+          <div class="fact-title">Fast turnaround</div>
+          <div class="fact-sub">No agency overhead · direct access to the developer building your product</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-icon">🔒</div>
+        <div>
+          <div class="fact-title">GDPR compliant</div>
+          <div class="fact-sub">Dutch company · all products comply with GDPR and Shopify's data requirements</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-icon">📦</div>
+        <div>
+          <div class="fact-title">Full-stack delivery</div>
+          <div class="fact-sub">Backend, frontend, deployment, documentation — one point of contact</div>
+        </div>
+      </div>
+      <div class="kvk-chip"><span class="flag">🇳🇱</span>KvK 93478221 · Untapped B.V. · Amsterdam</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2>Let's build<br>something together</h2>
+    <p>Whether you need a Shopify app, a custom integration, or something more bespoke — get in touch and we'll figure out what makes sense.</p>
+    <div class="contact-methods">
+      <a href="mailto:info@untapped.nl" class="contact-btn primary">✉️ info@untapped.nl</a>
+      <a href="https://profitguard.nl" class="contact-btn secondary">View ProfitGuard →</a>
+    </div>
+    <div class="contact-details">
+      <div class="contact-detail">📍 Amsterdam, Netherlands</div>
+      <div class="contact-detail">🟢 Shopify Partner</div>
+      <div class="contact-detail">🇳🇱 KvK 93478221</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. · Amsterdam · All rights reserved</div>
+    <div class="footer-links">
+      <a href="https://profitguard.nl">ProfitGuard</a>
+      <a href="https://apps.shopify.com/smart-order-notes">Smart Notes</a>
+      <a href="mailto:info@untapped.nl">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

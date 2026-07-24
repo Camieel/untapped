@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Carrier Shipping & Labels — Documentation Hub | Untapped B.V.</title>
+  <meta name="description" content="Central documentation, legal policies, and administration guides for the Multi-Carrier Shipping & Labels extension for Zoho CRM by Untapped B.V.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --zoho-orange: #f47920;
+      --orange-light: #fff1e5;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero { padding: 64px 32px 48px; max-width: 1080px; margin: 0 auto; width: 100%; }
+    .breadcrumb { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    h1 { font-family: var(--fd); font-size: clamp(32px, 4vw, 48px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; }
+    .hero-sub { font-size: 16px; color: var(--muted); max-width: 680px; line-height: 1.7; }
+    
+    /* ── PORTAL GRID ── */
+    .portal-section { padding: 20px 32px 80px; max-width: 1080px; margin: 0 auto; width: 100%; flex: 1; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
+    
+    .card { border: 1px solid var(--border-light); border-radius: 12px; padding: 28px 24px; background: var(--bg); text-decoration: none; color: var(--ink); transition: all 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .card:hover { border-color: var(--zoho-orange); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background 0.2s; }
+    .card:hover::before { background: var(--zoho-orange); }
+    
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .card-icon { font-size: 28px; background: var(--bg-soft); width: 54px; height: 54px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); }
+    .card-arrow { font-size: 18px; color: var(--subtle); transition: transform 0.2s, color 0.2s; }
+    .card:hover .card-arrow { transform: translateX(4px); color: var(--zoho-orange); }
+    
+    .card-title { font-family: var(--fd); font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    
+    .card-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); margin-bottom: 8px; }
+    .card:hover .card-tag { color: var(--zoho-orange); }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; background: var(--bg-soft); margin-top: auto; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } .hero, .portal-section { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="/zoho-multi-carrier-shipping-labels/user-guide">User Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/admin-guide">Admin Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/help">FAQ</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy</a></li>
+    </ul>
+    <a href="/zoho-multi-carrier-shipping-labels/install" class="nav-cta">Install in CRM</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="breadcrumb"><a href="/">Untapped B.V.</a> / Products / Zoho Extensions</div>
+  <h1>Multi-Carrier Shipping & Labels</h1>
+  <p class="hero-sub">Welcome to the central documentation and legal hub for our Zoho CRM shipping extension. Select a topic below to view setup guides, daily workflows, or legal agreements.</p>
+</header>
+
+<main class="portal-section">
+  <div class="grid">
+    
+    <!-- 1. User Guide -->
+    <a href="/zoho-multi-carrier-shipping-labels/user-guide" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">📖</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Documentation</span>
+        <h2 class="card-title">User Guide</h2>
+        <p class="card-desc">Step-by-step instructions for daily users on creating shipping labels, selecting pickup points, and handling returns.</p>
+      </div>
+    </a>
+
+    <!-- 2. Admin Guide -->
+    <a href="/zoho-multi-carrier-shipping-labels/admin-guide" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">⚙️</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Administration</span>
+        <h2 class="card-title">Admin Guide</h2>
+        <p class="card-desc">Setup instructions for system administrators: linking carrier API keys, mapping modules, and configuring permissions.</p>
+      </div>
+    </a>
+
+    <!-- 3. Help & FAQ -->
+    <a href="/zoho-multi-carrier-shipping-labels/help" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">❓</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Support</span>
+        <h2 class="card-title">Help & FAQ</h2>
+        <p class="card-desc">Troubleshooting common carrier rejection errors, address validation rules, and developer support contacts.</p>
+      </div>
+    </a>
+
+    <!-- 4. Case Studies -->
+    <a href="/zoho-multi-carrier-shipping-labels/case-studies" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">📈</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Success Stories</span>
+        <h2 class="card-title">Case Studies</h2>
+        <p class="card-desc">Discover how European B2B merchants reduce fulfillment errors by 100% and save 15+ hours weekly.</p>
+      </div>
+    </a>
+
+    <!-- 5. Installation -->
+    <a href="/zoho-multi-carrier-shipping-labels/install" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">🚀</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Deployment</span>
+        <h2 class="card-title">Installation URL</h2>
+        <p class="card-desc">System requirements, supported Zoho CRM editions, and the direct Marketplace installation launcher.</p>
+      </div>
+    </a>
+
+    <!-- 6. Privacy Policy -->
+    <a href="/zoho-multi-carrier-shipping-labels/privacy" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">🔒</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Legal & GDPR</span>
+        <h2 class="card-title">Privacy Policy</h2>
+        <p class="card-desc">GDPR compliance details, data transmission architecture, and how we handle customer CRM records.</p>
+      </div>
+    </a>
+
+    <!-- 7. Terms of Service -->
+    <a href="/zoho-multi-carrier-shipping-labels/terms" class="card">
+      <div>
+        <div class="card-header">
+          <div class="card-icon">⚖️</div>
+          <span class="card-arrow">→</span>
+        </div>
+        <span class="card-tag">Legal & Licensing</span>
+        <h2 class="card-title">Terms of Service</h2>
+        <p class="card-desc">Software licensing terms, carrier liability limitations, SLA guidelines, and usage conditions.</p>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. · Amsterdam · KvK 93478221 · All rights reserved</div>
+    <div class="footer-links">
+      <a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy Policy</a>
+      <a href="/zoho-multi-carrier-shipping-labels/terms">Terms of Service</a>
+      <a href="mailto:info@untapped.nl">Contact Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

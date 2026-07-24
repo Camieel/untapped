@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Guide — Multi-Carrier Shipping & Labels | Untapped B.V.</title>
+  <meta name="description" content="Technical administration guide, API key configuration, and security setup for the Multi-Carrier Shipping & Labels extension for Zoho CRM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --zoho-orange: #f47920;
+      --orange-light: #fff1e5;
+      --green: #1a7f37;
+      --green-light: #dafbe1;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HEADER ── */
+    .page-header { padding: 64px 32px 40px; max-width: 900px; margin: 0 auto; width: 100%; border-bottom: 1px solid var(--border-light); }
+    .breadcrumb { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zoho-orange); margin-bottom: 10px; }
+    h1 { font-family: var(--fd); font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--subtle); }
+
+    /* ── CONTENT ── */
+    .content-area { padding: 48px 32px 80px; max-width: 900px; margin: 0 auto; width: 100%; flex: 1; }
+    .content-area h2 { font-family: var(--fd); font-size: 26px; font-weight: 400; color: var(--ink); margin: 40px 0 16px; padding-top: 24px; border-top: 1px solid var(--border-light); }
+    .content-area h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .content-area h3 { font-size: 18px; font-weight: 600; color: var(--ink); margin: 24px 0 10px; }
+    .content-area p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .content-area ul, .content-area ol { margin: 0 0 20px 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .content-area li { margin-bottom: 10px; }
+    .content-area strong { color: var(--ink2); font-weight: 600; }
+    
+    .callout-box { background: var(--bg-soft); border: 1px solid var(--border-light); border-left: 4px solid var(--zoho-orange); padding: 20px; border-radius: 8px; margin: 24px 0; }
+    .callout-box p { margin-bottom: 0; font-size: 14px; color: var(--ink2); }
+    
+    .code-box { background: var(--ink); color: #e6edf3; padding: 18px; border-radius: 8px; font-family: monospace; font-size: 13px; overflow-x: auto; margin: 16px 0 24px; line-height: 1.5; }
+
+    /* Step cards */
+    .step-card { background: var(--bg-soft); border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+    .step-number { background: var(--ink); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-text { flex: 1; font-size: 15px; color: var(--muted); }
+    .step-text strong { color: var(--ink); font-size: 16px; display: block; margin-bottom: 4px; }
+
+    .table-container { overflow-x: auto; margin: 20px 0 28px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+    th { background: var(--bg-soft); color: var(--ink); font-weight: 600; padding: 12px 16px; border-bottom: 2px solid var(--border); }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); color: var(--muted); }
+    td strong { color: var(--ink2); }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; background: var(--bg-soft); margin-top: auto; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } .page-header, .content-area { padding-left: 20px; padding-right: 20px; } .step-card { flex-direction: column; gap: 12px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="/zoho-multi-carrier-shipping-labels">← Documentation Hub</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/user-guide">User Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/help">FAQ</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy</a></li>
+    </ul>
+    <a href="/zoho-multi-carrier-shipping-labels/install" class="nav-cta">Install in CRM</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Untapped B.V.</a> / <a href="/zoho-multi-carrier-shipping-labels">Multi-Carrier Shipping & Labels</a> / Admin Guide</div>
+  <div class="section-tag">Technical Administration</div>
+  <h1>Admin Guide</h1>
+  <div class="page-meta">Installation, API configuration, and permission mapping for system administrators</div>
+</header>
+
+<main class="content-area">
+  
+  <h2>1. Prerequisites & System Requirements</h2>
+  <p>Before installing the <strong>Multi-Carrier Shipping & Labels</strong> extension, verify that your Zoho CRM environment meets the necessary system requirements. The installer requires administrative privileges to create custom modules and buttons.</p>
+  <ul>
+    <li><strong>Supported Zoho CRM Editions:</strong> Professional, Enterprise, Ultimate, Zoho One, or Zoho CRM Plus. <em>(Standard and Free editions are not supported due to their lack of Custom Deluge Functions and Embedded UI Widgets).</em></li>
+    <li><strong>Required User Role:</strong> You must be signed in as a Zoho CRM **Administrator** during installation.</li>
+    <li><strong>Module Access:</strong> Ensure the <code>Sales_Orders</code>, <code>Contacts</code>, and <code>Accounts</code> standard modules are active in your CRM workspace.</li>
+  </ul>
+
+  <h2>2. Installation & Profile Permissions</h2>
+  <p>To deploy the extension from the Zoho Marketplace:</p>
+  <div class="step-card">
+    <div class="step-number">1</div>
+    <div class="step-text">
+      <strong>Launch the Marketplace Installer</strong>
+      Navigate to the official Marketplace installation link (or open <em>Settings → Setup → Marketplace → All</em> inside Zoho CRM and search for "Multi-Carrier Shipping").
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-number">2</div>
+    <div class="step-text">
+      <strong>Agree to Terms & Select Profiles</strong>
+      Review the Terms of Service and check the agreement boxes. Choose which user profiles should be granted access to the fulfillment features. We recommend selecting <strong>"Install for specific profiles"</strong> and granting access to Administrator, Standard, and Sales Management roles.
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="step-number">3</div>
+    <div class="step-text">
+      <strong>Confirm Automated Deployment</strong>
+      Click **Install**. The setup engine will automatically generate the custom button on the Sales Orders module, install the <code>Carrier_Configs</code> custom storage module, and register the underlying Deluge backend scripts.
+    </div>
+  </div>
+
+  <h2>3. Configuring Carrier API Keys</h2>
+  <p>To authorize label generation and live Track & Trace synchronization, you must link your active shipping carrier accounts by storing your developer API credentials in Zoho CRM.</p>
+  
+  <div class="callout-box">
+    <p><strong>Security Note:</strong> API credentials are stored in the custom module <code>Carrier_Configs</code>. We recommend restricting READ/WRITE access to this specific module to **Administrator profiles only** to prevent unauthorized modification of your shipping contracts.</p>
+  </div>
+
+  <p>Follow these steps to configure your carriers:</p>
+  <ol>
+    <li>Inside Zoho CRM, go to the top navigation bar and open the **Carrier_Configs** module (if hidden, check under the <em>More (...)</em> dropdown menu).</li>
+    <li>Click **+ Create Carrier Config** to add a new connection record.</li>
+    <li>In the **Carrier Name** field, type the exact identifier for your provider (case-sensitive). Use one of the supported names below:
+      <ul>
+        <li><code>SendCloud</code></li>
+        <li><code>MyParcel</code></li>
+        <li><code>PostNL</code></li>
+        <li><code>DHL</code></li>
+      </ul>
+    </li>
+    <li>In the **API Key Username** field, paste your Public API Key or developer access token obtained from your carrier's merchant dashboard.</li>
+    <li>In the **API Secret** field, paste your Secret Key or password (if required by the carrier; for PostNL, enter your standard API Key in the Username field and leave Secret empty).</li>
+    <li>Click **Save**. The widget will automatically read this record whenever a user attempts to generate a shipping label!</li>
+  </ol>
+
+  <h3>Reference Table: Where to find your Carrier Keys</h3>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Carrier</th>
+          <th>Required Identifiers</th>
+          <th>Where to find in Carrier Dashboard</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SendCloud</strong></td>
+          <td>Public Key & Secret Key</td>
+          <td><em>Settings → Integrations → SendCloud API → Create new API credentials</em></td>
+        </tr>
+        <tr>
+          <td><strong>MyParcel</strong></td>
+          <td>API Key (Token)</td>
+          <td><em>Shop Settings → General → API Keys → Generate new API key</em></td>
+        </tr>
+        <tr>
+          <td><strong>PostNL</strong></td>
+          <td>API Key (Token)</td>
+          <td><em>PostNL Developer Portal → Applications → Your App → API Key</em></td>
+        </tr>
+        <tr>
+          <td><strong>DHL</strong></td>
+          <td>API User & API Key</td>
+          <td><em>DHL eCommerce Portal → Settings → API Integration → Active Keys</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>4. Technical Architecture & Module Mapping</h2>
+  <p>During installation, the extension creates several underlying schema elements in your CRM database. Systeembeheerders should be aware of the following data structures:</p>
+  <ul>
+    <li><strong>Custom Button (<code>Sales_Orders</code>):</strong> A Web Tab / Embedded UI button named <code>🚚 Shipping & Returns</code> placed in the detail view header of Sales Orders.</li>
+    <li><strong>Custom Module (<code>Carrier_Configs</code>):</strong> Stores merchant API credentials. Contains fields: <code>Carrier_name</code>, <code>API_Key_Username</code>, and <code>API_Secret</code>.</li>
+    <li><strong>Related List (<code>Shipments</code> / Attachments):</strong> The extension writes tracking metadata back to the related list of the Sales Order and uploads generated PDF labels directly into the native **Attachments** section.</li>
+  </ul>
+
+  <h3>Deluge Function Execution</h3>
+  <p>The frontend HTML widget communicates with Zoho CRM via the official **Zoho Embedded App SDK 1.5**. When a user generates a label, the SDK triggers the backend Deluge function <code>dispatchshipment</code>:</p>
+
+  <div class="code-box">
+// Example internal payload triggered by the SDK
+ZOHO.CRM.FUNCTIONS.execute("dispatchshipment", {
+  "arguments": JSON.stringify({
+    "salesOrderId": "489201000000281001",
+    "carrierName": "SendCloud",
+    "packageType": "postnl:standard",
+    "weight": "1.50",
+    "deliveryType": "pickup",
+    "servicePointData": "{\"id\":\"3533\",\"name\":\"PostNL Pakketpunt\"}"
+  })
+});</div>
+
+  <h2>5. Troubleshooting Setup Errors</h2>
+  <p>If end-users encounter errors during their initial testing, review the checklist below:</p>
+  <ul>
+    <li><strong>"No API Key found for SendCloud / Carrier":</strong> Verify that a record exists in the <code>Carrier_Configs</code> module and that the <code>Carrier_name</code> field is spelled correctly without trailing spaces.</li>
+    <li><strong>"Zoho refused to execute the function":</strong> Go to <em>Settings → Developer Space → Functions</em>, locate <code>dispatchshipment</code>, and ensure the toggle <strong>"REST API / Widget Access"</strong> is enabled for all required user profiles.</li>
+    <li><strong>PDF label does not appear in attachments:</strong> Verify that the user role has **Create/Upload Attachment** permissions on the Sales Orders module.</li>
+  </ul>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. · Amsterdam · KvK 93478221 · All rights reserved</div>
+    <div class="footer-links">
+      <a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy Policy</a>
+      <a href="/zoho-multi-carrier-shipping-labels/terms">Terms of Service</a>
+      <a href="mailto:info@untapped.nl">Contact Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation & System Requirements — Multi-Carrier Shipping & Labels | Untapped B.V.</title>
+  <meta name="description" content="System requirements, supported Zoho CRM editions, preparation checklist, and cloud installation link for the Multi-Carrier Shipping & Labels extension.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --zoho-orange: #f47920;
+      --orange-light: #fff1e5;
+      --green: #1a7f37;
+      --green-light: #dafbe1;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HEADER ── */
+    .page-header { padding: 64px 32px 40px; max-width: 900px; margin: 0 auto; width: 100%; border-bottom: 1px solid var(--border-light); }
+    .breadcrumb { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zoho-orange); margin-bottom: 10px; }
+    h1 { font-family: var(--fd); font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--subtle); }
+
+    /* ── CONTENT ── */
+    .content-area { padding: 48px 32px 80px; max-width: 900px; margin: 0 auto; width: 100%; flex: 1; }
+    .content-area h2 { font-family: var(--fd); font-size: 26px; font-weight: 400; color: var(--ink); margin: 40px 0 16px; padding-top: 24px; border-top: 1px solid var(--border-light); }
+    .content-area h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .content-area h3 { font-size: 18px; font-weight: 600; color: var(--ink); margin: 24px 0 10px; }
+    .content-area p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .content-area ul, .content-area ol { margin: 0 0 20px 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .content-area li { margin-bottom: 8px; }
+    .content-area strong { color: var(--ink2); font-weight: 600; }
+
+    /* Install Hero Banner */
+    .install-banner { background: var(--ink); border-radius: 14px; padding: 36px; color: #fff; text-align: center; margin-bottom: 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .install-banner h2 { font-family: var(--fd); font-size: 28px; color: #fff; margin: 0 0 12px; border: none; padding: 0; }
+    .install-banner p { color: rgba(255,255,255,0.7); font-size: 15px; max-width: 580px; margin: 0 auto 24px; }
+    .btn-install-large { display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 14px 32px; border-radius: 8px; text-decoration: none; transition: transform 0.15s, opacity 0.15s; }
+    .btn-install-large:hover { opacity: 0.95; transform: translateY(-2px); }
+    .install-note { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 14px; display: block; }
+
+    /* System Requirements Grid */
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0 32px; }
+    @media(max-width:640px){ .req-grid { grid-template-columns: 1fr; } }
+    .req-card { border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; background: var(--bg); }
+    .req-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .req-list { list-style: none; margin: 0; padding: 0; font-size: 14px; color: var(--muted); }
+    .req-list li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .req-list li.yes::before { content: '✓'; color: var(--green); font-weight: bold; }
+    .req-list li.no::before { content: '✕'; color: #cf222e; font-weight: bold; }
+
+    /* Checklist card */
+    .checklist-card { background: var(--bg-soft); border: 1px solid var(--border-light); border-radius: 10px; padding: 24px; margin: 20px 0; }
+    .checklist-item { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+    .checklist-item:last-child { margin-bottom: 0; }
+    .check-icon { background: var(--green-light); color: var(--green); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+    .check-text { font-size: 15px; color: var(--muted); }
+    .check-text strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; background: var(--bg-soft); margin-top: auto; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } .page-header, .content-area { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="/zoho-multi-carrier-shipping-labels">← Documentation Hub</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/user-guide">User Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/admin-guide">Admin Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/help">FAQ</a></li>
+    </ul>
+    <a href="#install-launcher" class="nav-cta">Install in CRM</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Untapped B.V.</a> / <a href="/zoho-multi-carrier-shipping-labels">Multi-Carrier Shipping & Labels</a> / Installation</div>
+  <div class="section-tag">Cloud Deployment & Requirements</div>
+  <h1>Installation & System Requirements</h1>
+  <div class="page-meta">No local software downloads required · Deploys directly via Zoho Cloud in under 3 minutes</div>
+</header>
+
+<main class="content-area">
+
+  <!-- Install Hero Box -->
+  <div class="install-banner" id="install-launcher">
+    <h2>Ready to automate your shipping workflow?</h2>
+    <p>Deploy the Multi-Carrier Shipping & Labels extension directly into your Zoho CRM workspace. Click below to launch the official Zoho Marketplace installer.</p>
+    <a href="https://marketplace.zoho.eu/app/crm/multi-carrier-shipping-labels" target="_blank" class="btn-install-large">
+      <span>🚀 Install from Zoho Marketplace</span>
+    </a>
+    <span class="install-note">Requires Zoho CRM Administrator privileges · Secure cloud installation</span>
+  </div>
+
+  <h2>1. How Cloud Installation Works</h2>
+  <p>The Multi-Carrier Shipping & Labels extension is distributed natively through the <strong>Zoho Marketplace Cloud Engine</strong>. There are no executable files (.exe, .pkg, or .zip) to download or run on your local computer or office server.</p>
+  <p>When you click the installation button above, you will be redirected to Zoho's secure cloud authorization portal. Once you confirm your organization and accept the licensing terms, Zoho automatically creates the required custom modules, installs the embedded shipping widget, and places the fulfillment button on your Sales Orders module.</p>
+
+  <h2>2. Supported Zoho CRM Editions</h2>
+  <p>Because our software relies on advanced automation features—specifically **Custom Deluge Functions**, **Web Tabs / Embedded Apps SDK 1.5**, and **Custom Storage Modules**—your Zoho CRM workspace must run on a compatible license tier.</p>
+
+  <div class="req-grid">
+    <div class="req-card">
+      <div class="req-title" style="color: var(--green);">🟢 Supported Editions</div>
+      <ul class="req-list">
+        <li class="yes">Zoho CRM Professional</li>
+        <li class="yes">Zoho CRM Enterprise</li>
+        <li class="yes">Zoho CRM Ultimate</li>
+        <li class="yes">Zoho One (All-in-One Suite)</li>
+        <li class="yes">Zoho CRM Plus Suite</li>
+      </ul>
+    </div>
+    <div class="req-card">
+      <div class="req-title" style="color: #cf222e;">🔴 Incompatible Editions</div>
+      <ul class="req-list">
+        <li class="no">Zoho CRM Free Edition</li>
+        <li class="no">Zoho CRM Standard Edition</li>
+        <li class="no">Zoho Bigin (Basic Pipeline CRM)</li>
+      </ul>
+    </div>
+  </div>
+  <p><em>Note: If you attempt to install the extension on an incompatible edition (such as Free or Standard), Zoho Marketplace will block the installation during the authorization step.</em></p>
+
+  <h2>3. Pre-Installation Checklist</h2>
+  <p>To ensure a smooth, 3-minute setup, verify the following three items before launching the installer:</p>
+
+  <div class="checklist-card">
+    <div class="checklist-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Administrator Access in Zoho CRM</strong>
+        You must be logged into Zoho CRM with a user account assigned to the **Administrator** profile. Standard users or restricted roles cannot install Marketplace extensions.
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Active Standard Modules</strong>
+        Verify that the standard Zoho CRM modules for **Sales Orders**, **Contacts**, and **Accounts** are active and visible in your workspace.
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon">✓</div>
+      <div class="check-text">
+        <strong>Carrier API Credentials Ready</strong>
+        To generate labels immediately after installation, have your developer API keys ready from your contracted shipping carriers (e.g., PostNL, DHL, SendCloud, or MyParcel). You will paste these into the newly created <code>Carrier_Configs</code> module.
+      </div>
+    </div>
+  </div>
+
+  <h2>4. Post-Installation Steps</h2>
+  <p>Once the automated cloud installation finishes, complete your setup by following our short configuration guide:</p>
+  <ol>
+    <li>Open our <a href="/zoho-multi-carrier-shipping-labels/admin-guide" style="color:var(--blue);font-weight:600;">Admin Guide</a> to learn how to store your carrier API keys safely in the <code>Carrier_Configs</code> module.</li>
+    <li>Share the <a href="/zoho-multi-carrier-shipping-labels/user-guide" style="color:var(--blue);font-weight:600;">User Guide</a> with your sales representatives and fulfillment staff so they can start generating labels and processing returns immediately.</li>
+  </ol>
+
+  <h2>5. Security & Data Sovereignty</h2>
+  <p>The installation process is governed by strict ISO-27001 and GDPR security protocols enforced by both Zoho Corporation and Untapped B.V. All data transmission occurs over encrypted 256-bit TLS connections. For complete details on how order data is handled during label creation, read our official <a href="/zoho-multi-carrier-shipping-labels/privacy" style="color:var(--blue);font-weight:600;">Privacy Policy</a>.</p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. · Amsterdam · KvK 93478221 · All rights reserved</div>
+    <div class="footer-links">
+      <a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy Policy</a>
+      <a href="/zoho-multi-carrier-shipping-labels/terms">Terms of Service</a>
+      <a href="mailto:info@untapped.nl">Contact Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

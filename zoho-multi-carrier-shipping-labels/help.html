@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Document & FAQ — Multi-Carrier Shipping & Labels | Untapped B.V.</title>
+  <meta name="description" content="Frequently asked questions, troubleshooting scenarios, and technical support for the Multi-Carrier Shipping & Labels extension for Zoho CRM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --zoho-orange: #f47920;
+      --orange-light: #fff1e5;
+      --green: #1a7f37;
+      --red: #dc3545;
+      --red-light: #fff5f5;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HEADER ── */
+    .page-header { padding: 64px 32px 40px; max-width: 900px; margin: 0 auto; width: 100%; border-bottom: 1px solid var(--border-light); }
+    .breadcrumb { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zoho-orange); margin-bottom: 10px; }
+    h1 { font-family: var(--fd); font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--subtle); }
+
+    /* ── CONTENT ── */
+    .content-area { padding: 48px 32px 80px; max-width: 900px; margin: 0 auto; width: 100%; flex: 1; }
+    .content-area h2 { font-family: var(--fd); font-size: 26px; font-weight: 400; color: var(--ink); margin: 40px 0 16px; padding-top: 24px; border-top: 1px solid var(--border-light); }
+    .content-area h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .content-area p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .content-area ul { margin: 0 0 20px 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .content-area li { margin-bottom: 8px; }
+    .content-area strong { color: var(--ink2); font-weight: 600; }
+    
+    .callout-box { background: var(--bg-soft); border: 1px solid var(--border-light); border-left: 4px solid var(--zoho-orange); padding: 20px; border-radius: 8px; margin: 24px 0; }
+    .callout-box p { margin-bottom: 0; font-size: 14px; color: var(--ink2); }
+
+    /* FAQ accordion styling */
+    .faq-item { border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; margin-bottom: 16px; background: var(--bg); transition: border-color 0.15s; }
+    .faq-item:hover { border-color: var(--border); }
+    .faq-q { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+    .faq-q::before { content: 'Q:'; color: var(--zoho-orange); font-weight: 700; flex-shrink: 0; }
+    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.7; padding-left: 26px; }
+    .faq-a p:last-child { margin-bottom: 0; }
+
+    .error-badge { display: inline-block; background: var(--red-light); color: var(--red); border: 1px solid #f5c2c7; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; font-family: monospace; margin-bottom: 6px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; background: var(--bg-soft); margin-top: auto; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } .page-header, .content-area { padding-left: 20px; padding-right: 20px; } .faq-a { padding-left: 0; margin-top: 8px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="/zoho-multi-carrier-shipping-labels">← Documentation Hub</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/user-guide">User Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/admin-guide">Admin Guide</a></li>
+      <li><a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy</a></li>
+    </ul>
+    <a href="/zoho-multi-carrier-shipping-labels/install" class="nav-cta">Install in CRM</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Untapped B.V.</a> / <a href="/zoho-multi-carrier-shipping-labels">Multi-Carrier Shipping & Labels</a> / Help & FAQ</div>
+  <div class="section-tag">Troubleshooting & Support</div>
+  <h1>Help Document & FAQ</h1>
+  <div class="page-meta">Solutions to common carrier errors, address validation rules, and support contacts</div>
+</header>
+
+<main class="content-area">
+  
+  <h2>1. Frequently Asked Questions (FAQ)</h2>
+  
+  <div class="faq-item">
+    <div class="faq-q">Why does the shipping widget display an "Incomplete Address" warning?</div>
+    <div class="faq-a">
+      <p>The shipping carrier APIs (PostNL, DHL, SendCloud, MyParcel) strictly require a valid street address, house number, postal code, and city to calculate shipping routes. If any of these mandatory fields are empty or incomplete in your Zoho CRM Sales Order record, the widget automatically blocks label generation to prevent carrier rejection fees. Update the address fields on the order and click <strong>🔄 Retry</strong> in the widget.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why is my Mailbox Package rejected by the widget or carrier?</div>
+    <div class="faq-a">
+      <p>In the Benelux region, carriers enforce strict maximum dimensions for mailbox parcels (specifically a maximum thickness of <strong>3.2 cm</strong> for PostNL and MyParcel). If the height entered in the widget exceeds 3.2 cm, our system will prevent submission and alert you to adjust the package dimensions or select a standard parcel service.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why isn't the PDF shipping label appearing in my order Attachments immediately?</div>
+    <div class="faq-a">
+      <p>While carriers like PostNL and MyParcel generate PDF labels synchronously (instantly), certain providers—most notably <strong>DHL</strong>—process shipping labels asynchronously in their backend queue. If the widget displays <em>"⏳ Label is being processed..."</em>, wait 5 to 10 seconds and press <strong>F5</strong> (or refresh your browser window). The PDF label will automatically appear under your Zoho CRM Attachments list once the carrier completes generation.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can I generate multiple shipping labels for a single Zoho CRM order?</div>
+    <div class="faq-a">
+      <p>Yes! If an order consists of multiple boxes or requires split fulfillment, open the shipping widget on the active order and click the <strong>➕ Extra Label</strong> button at the bottom of the dashboard. This temporarily overrides the active shipments view and allows you to generate an additional, independent tracking number and label for the second package.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How do I cancel or void a shipping label that was created by mistake?</div>
+    <div class="faq-a">
+      <p>Open the shipping widget on the Sales Order, locate the specific label under "Active Shipments", and click the trash icon labeled <strong>🚨 Cancel</strong>. Confirm the cancellation prompt. The extension will send an API cancellation request to the carrier to void the barcode before it is scanned by the driver. <em>Note: Labels can usually only be voided before they are physically scanned at the sorting depot.</em></p>
+    </div>
+  </div>
+
+  <h2>2. Troubleshooting Carrier API Errors</h2>
+  <p>When an API error occurs, the widget will display the raw rejection message returned by the carrier. Reference the common error codes below to resolve the issue:</p>
+
+  <div class="faq-item">
+    <div class="error-badge">ERROR: Unauthorized / Invalid API Key</div>
+    <div class="faq-q">The widget says "No API Key found" or "Authentication Failed".</div>
+    <div class="faq-a">
+      <p>This indicates that your carrier credentials are missing or incorrect. Please contact your system administrator to verify that your exact Public Key and Secret Key are saved correctly inside the <code>Carrier_Configs</code> custom module in Zoho CRM.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="error-badge">ERROR: Invalid Postal Code Format</div>
+    <div class="faq-q">The carrier rejects the shipment with a postal code or country error.</div>
+    <div class="faq-a">
+      <p>Ensure that the postal code matches the official format of the destination country. For Dutch (NL) addresses, ensure there is a valid 4-digit and 2-letter combination (e.g., <code>1000 AA</code>). For international world parcels, verify that the two-letter ISO country code (e.g., <code>US</code>, <code>DE</code>, <code>BE</code>) is selected correctly in CRM.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="error-badge">ERROR: Weight Out of Bounds</div>
+    <div class="faq-q">The carrier rejects the label stating the weight is invalid.</div>
+    <div class="faq-a">
+      <p>Check the weight field in the widget modal. Carriers reject labels with a weight of <code>0.00 kg</code> or negative values. If your Zoho order items do not have pre-configured weights, manually enter a valid weight (e.g., <code>1.50</code> kg) before clicking create.</p>
+    </div>
+  </div>
+
+  <h2>3. Technical Support & Studio Contact</h2>
+  <p>If you encounter persistent technical bugs, require custom field mapping, or need assistance adapting the extension to your specific warehouse workflow, our development team is ready to help.</p>
+  
+  <div class="callout-box">
+    <p><strong>Contacting Support:</strong> When submitting a support request, please include your <strong>Zoho CRM Organization ID</strong>, the name of the carrier experiencing issues, and a screenshot or copy of the exact error message displayed in the widget.</p>
+  </div>
+
+  <p>
+    <strong>Untapped B.V. — Technical Support Studio</strong><br>
+    Amsterdam, Netherlands<br>
+    Chamber of Commerce (KvK): 93478221<br>
+    Support Email: <a href="mailto:info@untapped.nl" style="color:var(--blue);text-decoration:none;font-weight:600;">info@untapped.nl</a><br>
+    Response Time: Monday – Friday, 09:00 – 17:00 CE(S)T
+  </p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. · Amsterdam · KvK 93478221 · All rights reserved</div>
+    <div class="footer-links">
+      <a href="/zoho-multi-carrier-shipping-labels/privacy">Privacy Policy</a>
+      <a href="/zoho-multi-carrier-shipping-labels/terms">Terms of Service</a>
+      <a href="mailto:info@untapped.nl">Contact Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

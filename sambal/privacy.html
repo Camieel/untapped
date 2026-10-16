@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Sambal | Untapped</title>
+  <meta name="description" content="How Sambal, the iPhone recipe app by Untapped, handles your data: on-device storage, no account, no tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1117;
+      --ink2: #24292f;
+      --muted: #57606a;
+      --subtle: #8c959f;
+      --border: #d0d7de;
+      --border-light: #eaeef2;
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --bg-inset: #f0f2f4;
+      --blue: #0969da;
+      --zoho-orange: #f47920;
+      --orange-light: #fff1e5;
+      --fd: 'DM Serif Display', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav { border-bottom: 1px solid var(--border-light); background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--fd); font-size: 20px; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+    .logo-u { width: 30px; height: 30px; background: var(--ink); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-family: var(--fd); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px; font-weight: 600; color: #fff; background: var(--zoho-orange); padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HEADER ── */
+    .page-header { padding: 64px 32px 40px; max-width: 900px; margin: 0 auto; width: 100%; border-bottom: 1px solid var(--border-light); }
+    .breadcrumb { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--zoho-orange); margin-bottom: 10px; }
+    h1 { font-family: var(--fd); font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--subtle); }
+
+    /* ── CONTENT ── */
+    .content-area { padding: 48px 32px 80px; max-width: 900px; margin: 0 auto; width: 100%; flex: 1; }
+    .content-area h2 { font-family: var(--fd); font-size: 24px; font-weight: 400; color: var(--ink); margin: 36px 0 16px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+    .content-area h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .content-area p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .content-area ul { margin: 0 0 20px 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .content-area li { margin-bottom: 8px; }
+    .content-area strong { color: var(--ink2); font-weight: 600; }
+    
+    .callout-box { background: var(--bg-soft); border: 1px solid var(--border-light); border-left: 4px solid var(--zoho-orange); padding: 20px; border-radius: 8px; margin: 24px 0; }
+    .callout-box p { margin-bottom: 0; font-size: 14px; color: var(--ink2); }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border-light); padding: 32px; background: var(--bg-soft); margin-top: auto; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    
+    @media(max-width:768px){ .nav-links { display: none; } nav { padding: 0 16px; } .page-header, .content-area { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-u">U</div>
+      Untapped
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">← Untapped</a></li>
+      <li><a href="/sambal">Support</a></li>
+      <li><a href="/sambal/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Untapped</a> / <a href="/sambal">Sambal</a> / Privacy Policy</div>
+  <div class="section-tag">Privacy & GDPR</div>
+  <h1>Privacy Policy</h1>
+  <div class="page-meta">Last updated: 16 October 2026 · Untapped, a sole proprietorship (eenmanszaak) of Camiel Landheer, Amsterdam, KvK 77822412</div>
+</header>
+
+<main class="content-area">
+
+  <h2>1. Who we are</h2>
+  <p>The controller for Sambal is Untapped, a sole proprietorship (eenmanszaak) of Camiel Landheer, Amsterdam, KvK 77822412 ("we", "our", or "us"). You can reach us at <a href="mailto:sambal@untapped.nl" style="color:var(--blue);text-decoration:none;font-weight:600;">sambal@untapped.nl</a>.</p>
+  <div class="callout-box">
+    <p><strong>In short:</strong> Sambal has no account and no Untapped server. Your recipes stay on your device. We use no analytics, no advertising and no tracking.</p>
+  </div>
+
+  <h2>2. Data stored on your device</h2>
+  <p>Your recipes, your own photos, your settings and your timers are stored only on your device. We do not receive them. If you delete the app, this data is deleted with it.</p>
+  <p>Apple's device backup (iCloud or a computer) may include app data. That happens under Apple's terms and not under our control.</p>
+
+  <h2>3. Importing recipes</h2>
+  <p>When you import a recipe, your device fetches only the web page you chose, directly from that website. The website receives a normal web request, which includes technical information such as your IP address, and handles it under its own privacy policy. The request does not go through us.</p>
+  <p>Recipe photos from websites are shown from the website itself and are kept in a temporary image cache on your device.</p>
+
+  <h2>4. Notifications, camera and photo library</h2>
+  <p>Timer notifications are scheduled locally on your device. They do not involve a server.</p>
+  <p>Sambal uses the camera and the photo library only when you add a photo to a recipe. The photo stays on your device.</p>
+
+  <h2>5. Backups</h2>
+  <p>A backup is a file that you create and store wherever you choose. It contains your recipes but not your own photos. We never receive it.</p>
+
+  <h2>6. Purchases</h2>
+  <p>Sambal Pro is a one-time purchase. Apple processes the payment, and we never see your payment details.</p>
+  <p>We use RevenueCat to verify the Sambal Pro purchase. RevenueCat receives an anonymous app user ID and the purchase receipt, and it may receive device and network information as part of these requests. See <a href="https://www.revenuecat.com/privacy/" style="color:var(--blue);text-decoration:none;font-weight:600;">RevenueCat's privacy policy</a> for how it handles this data.</p>
+  <!-- CHECK: confirm the RevenueCat privacy policy URL, and whether RevenueCat acts as processor or independent controller and where it stores data (e.g. outside the EEA, transfer mechanism). -->
+
+  <h2>7. What we do not do</h2>
+  <ul>
+    <li>We run no analytics.</li>
+    <li>We show no advertising.</li>
+    <li>We do not track you.</li>
+    <li>We do not sell your data or share it for marketing.</li>
+  </ul>
+
+  <h2>8. Your rights under the GDPR</h2>
+  <p>Under the GDPR you have the right to access, rectify and erase your personal data, to restrict or object to its processing, and to data portability. You also have the right to lodge a complaint with a supervisory authority, in the Netherlands the Autoriteit Persoonsgegevens.</p>
+  <p>On our side we hold no personal data about you beyond what RevenueCat processes for purchases. For requests about purchase data, contact us at <a href="mailto:sambal@untapped.nl" style="color:var(--blue);text-decoration:none;font-weight:600;">sambal@untapped.nl</a> and we will help you with RevenueCat.</p>
+  <!-- CHECK: confirm that you hold no email or support correspondence data you want to mention (emails sent to sambal@untapped.nl are personal data), and the retention period. -->
+
+  <h2>9. Children</h2>
+  <p>Sambal is not directed at children under 13 in a way that collects data. We collect no personal data from anyone, children included.</p>
+  <!-- CHECK: confirm the intended age rating in the App Store and whether a different age threshold applies under Dutch/GDPR rules (16 for consent in some cases; 13 is the US COPPA threshold). -->
+
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this policy, for example when the app changes. The "Last updated" date at the top shows when the latest version was published.</p>
+
+  <h2>11. Contact</h2>
+  <p>
+    <strong>Untapped</strong><br>
+    A sole proprietorship (eenmanszaak) of Camiel Landheer<br>
+    Amsterdam, Netherlands<br>
+    Chamber of Commerce (KvK): 77822412<br>
+    Email: <a href="mailto:sambal@untapped.nl" style="color:var(--blue);text-decoration:none;font-weight:600;">sambal@untapped.nl</a>
+  </p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© Untapped · Amsterdam · KvK 77822412</div>
+    <div class="footer-links">
+      <a href="/sambal">Support</a>
+      <a href="/sambal/privacy">Privacy</a>
+      <a href="mailto:sambal@untapped.nl">sambal@untapped.nl</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

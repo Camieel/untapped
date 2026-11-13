@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/sambal", "destination": "https://trysambal.com/", "statusCode": 301 },
+    { "source": "/sambal/", "destination": "https://trysambal.com/", "statusCode": 301 },
+    { "source": "/sambal/index.html", "destination": "https://trysambal.com/", "statusCode": 301 },
+    { "source": "/sambal/privacy", "destination": "https://trysambal.com/privacy/", "statusCode": 301 },
+    { "source": "/sambal/privacy.html", "destination": "https://trysambal.com/privacy/", "statusCode": 301 }
+  ]
 }
